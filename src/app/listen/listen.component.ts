@@ -1,5 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {SpeechService} from "../speech.service";
+import {Words} from "../words";
 import {Subscription} from "rxjs/Subscription";
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
@@ -12,13 +13,19 @@ import 'rxjs/add/operator/map';
 })
 export class ListenComponent implements OnInit, OnDestroy {
 
-  nouns: string[];
-  verbs: string[];
-  adjs: string[];
+  // Mock DB
+  nouns: string[] = new Words().array;
+  verbs: string[] = new Words().array;
+  adjs: string[] = new Words().array;
+
+  arrayFull: string;
+
+  // Subscriptions
   nounSub: Subscription;
   verbSub: Subscription;
   adjSub: Subscription;
   errorsSub: Subscription;
+
   errorMsg: string;
 
   constructor(public speech: SpeechService) {
@@ -45,7 +52,7 @@ export class ListenComponent implements OnInit, OnDestroy {
       .subscribe(
         noun => {
           this._setError();
-          console.log('noun:', noun);
+          this.nouns = this._updateWords('nouns', this.nouns, noun);
         }
       );
   }
@@ -57,7 +64,7 @@ export class ListenComponent implements OnInit, OnDestroy {
       .subscribe(
         verb => {
           this._setError();
-          console.log('verb:', verb);
+          this.verbs = this._updateWords('nouns', this.verbs, verb);
         }
       );
   }
@@ -69,7 +76,7 @@ export class ListenComponent implements OnInit, OnDestroy {
       .subscribe(
         adj => {
           this._setError();
-          console.log('adjective:', adj);
+          this.adjs = this._updateWords('adjectives', this.adjs, adj);
         }
       );
   }
@@ -77,6 +84,27 @@ export class ListenComponent implements OnInit, OnDestroy {
   private _listenErrors() {
     this.errorsSub = this.speech.errors$
       .subscribe(err => this._setError(err));
+  }
+
+  private _updateWords(type: string, arr: string[], newWord: string) {
+    const _checkArrayFull = arr.every(item => !!item === true);
+
+    if (_checkArrayFull) {
+      this.arrayFull = type;
+      return arr;
+    } else {
+      let _added = false;
+      this.arrayFull = null;
+      return arr.map(item => {
+        if (!item && !_added) {
+          _added = true;
+          return newWord;
+        } else {
+          return item;
+        }
+      });
+    }
+
   }
 
   private _setError(err?: any) {

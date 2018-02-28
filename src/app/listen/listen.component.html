@@ -35,7 +35,10 @@
 
 
   <div class="row mb-3">
+
+    <!--Action buttons-->
     <div class="col btn-group">
+
       <button
         class="btn btn-primary col-6"
         (click)="speech.startListening()"
@@ -49,13 +52,19 @@
         [disabled]="!speech.listening">
         <img class="icon" src="/assets/images/mic-off.png">Stop
       </button>
+
     </div>
+
   </div>
 
-  <div class="row">
+  <!--User friendly error logging-->
+  <div class="row" *ngIf="errorMsg || arrayFull">
     <div class="col">
       <p class="alert alert-warning">
-        {{errorMsg}}
+        <ng-template [ngIf]="errorMsg">{{errorMsg}}</ng-template>
+        <ng-template [ngIf]="arrayFull">You've already filled in all the available fields for
+          <strong>{{arrayFull}}</strong>.
+        </ng-template>
       </p>
     </div>
   </div>
