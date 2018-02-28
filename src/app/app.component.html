@@ -1,6 +1,5 @@
 <div class="container">
-  <h1 class="text-center">
-    madhatter
-  </h1>
-  <app-listen *ngIf="speech.getSpeechSupported()"></app-listen>
+  <h1 class="text-center">madhatter</h1>
+  <app-listen *ngIf="speech.getSpeechSupported"></app-listen>
+  <app-keyboard *ngIf="!speech.getSpeechSupported"></app-keyboard>
 </div>

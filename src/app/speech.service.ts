@@ -13,7 +13,7 @@ export class SpeechService {
   constructor(private zone: NgZone) {
   }
 
-  getSpeechSupported(): boolean {
+  get getSpeechSupported(): boolean {
     return !!annyang;
   }
 
@@ -40,9 +40,9 @@ export class SpeechService {
     annyang.addCommands(commands);
 
     // Log anything the user says and what speech recognition thinks it might be
-    // annyang.addCallback('result', (userSaid) => {
-    //   console.log('User may have said:', userSaid);
-    // });
+    annyang.addCallback('result', (userSaid) => {
+      console.log('User may have said:', userSaid);
+    });
     // also other callbacks for other events...
     annyang.addCallback('errorNetwork', (err) => {
       this._handleError('network', 'A network error occurred', err);
