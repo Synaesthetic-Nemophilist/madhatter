@@ -7,12 +7,14 @@ import {AppComponent} from './app.component';
 import {SpeechService} from "./speech.service";
 import {MadlibsService} from "./madlibs.service"
 import {ListenComponent} from './listen/listen.component';
+import {WordsFormComponent} from './words-form/words-form.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListenComponent
+    ListenComponent,
+    WordsFormComponent
   ],
   imports: [
     BrowserModule,
