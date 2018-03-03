@@ -56,6 +56,9 @@
         class="btn btn-block btn-lg btn-success"
         [disabled]="!wordsForm.form.valid">Go!
       </button>
+
+      <app-progress-bar [hidden]="!generating"></app-progress-bar>
+
     </div>
   </div>
 </form>

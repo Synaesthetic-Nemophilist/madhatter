@@ -11,6 +11,8 @@ import {ListenComponent} from './listen/listen.component';
 import {WordsFormComponent} from './words-form/words-form.component';
 import {KeyboardComponent} from './keyboard/keyboard.component';
 import {GenerateWordsComponent} from './generate-words/generate-words.component';
+import {ProgressBarComponent} from './progress-bar/progress-bar.component';
+import {MadlibComponent} from './madlib/madlib.component';
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import {GenerateWordsComponent} from './generate-words/generate-words.component'
     ListenComponent,
     WordsFormComponent,
     KeyboardComponent,
-    GenerateWordsComponent
+    GenerateWordsComponent,
+    ProgressBarComponent,
+    MadlibComponent
   ],
   imports: [
     BrowserModule,

@@ -16,8 +16,19 @@ export class MadlibsService {
   submit$ = new Subject<any>();
   words: any;
 
+  madlibReady = false;
+  pronoun: any;
+
 
   constructor(private http: HttpClient) {
+  }
+
+  setMadlibReady(val: boolean) {
+    this.madlibReady = val;
+  }
+
+  setPronoun(obj) {
+    this.pronoun = obj;
   }
 
   private _stringSuccessHandler(res: string): string {
@@ -77,6 +88,12 @@ export class MadlibsService {
       .catch(this._errorHandler);
 
     return Observable.forkJoin([adj$, adj$, adj$, adj$, adj$]);
+  }
+
+  getPronoun$() {
+    return this.http
+      .get(`${this._API}pronoun/gendered`)
+      .catch(this._errorHandler);
   }
 
   getWords$() {
