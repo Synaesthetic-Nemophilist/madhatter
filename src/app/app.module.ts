@@ -10,6 +10,7 @@ import {MadlibsService} from "./madlibs.service"
 import {ListenComponent} from './listen/listen.component';
 import {WordsFormComponent} from './words-form/words-form.component';
 import {KeyboardComponent} from './keyboard/keyboard.component';
+import {GenerateWordsComponent} from './generate-words/generate-words.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import {KeyboardComponent} from './keyboard/keyboard.component';
     AppComponent,
     ListenComponent,
     WordsFormComponent,
-    KeyboardComponent
+    KeyboardComponent,
+    GenerateWordsComponent
   ],
   imports: [
     BrowserModule,

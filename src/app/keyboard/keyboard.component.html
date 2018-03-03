@@ -8,6 +8,10 @@
     <li><strong>Verb:</strong> <em>"jumping"</em> (action, present tense), <em>"ran"</em> (action, past tense)</li>
     <li><strong>Adjective:</strong> <em>"flashy"</em> (describing word)</li>
   </ul>
+
+  <app-generate-words
+    (fetchedWords)="onFetchedAPIWords($event)"></app-generate-words>
+
 </div>
 
 <app-words-form

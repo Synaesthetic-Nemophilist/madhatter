@@ -116,6 +116,13 @@ export class ListenComponent implements OnInit, OnDestroy {
     }
   }
 
+  // From Madlib Service
+  onFetchedAPIWords(e) {
+    this.nouns = e.nouns;
+    this.verbs = e.verbs;
+    this.adjs = e.adjs;
+  }
+
 
   ngOnDestroy() {
     this.nounSub.unsubscribe();

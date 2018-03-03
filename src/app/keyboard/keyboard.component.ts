@@ -15,4 +15,10 @@ export class KeyboardComponent {
   constructor() {
   }
 
+  onFetchedAPIWords(e) {
+    this.nouns = e.nouns;
+    this.verbs = e.verbs;
+    this.adjs = e.adjs;
+  }
+
 }
